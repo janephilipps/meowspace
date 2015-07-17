@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Meowspace</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+  <h1>Meow!</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div id="cats-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JQUERY -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <!-- BOOTSTRAP JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <!-- UNDERSCORE -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+  <!-- CUSTOM SCRIPT -->
+  <script src="script.js"></script>
+
+  <!-- UNDERSCORE TEMPLATE -->
+  <script type="text/template" id="cats-template">
+    <div class="cat">
+      <p><%= name %></p>
+      <p><%= birthMonth %>, <%= birthYear %></p>
+      <p><%= type %></p>
+      <hr>
+    </div>
+  </script>
+
+</body>
+</html>
