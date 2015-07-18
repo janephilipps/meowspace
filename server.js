@@ -1,13 +1,47 @@
+// Require node modules
 
 var express = require('express'),
     bodyParser = require('body-parser'),
-    mongoose = require('mongoose'),
-    Cat = require('mongoose').model('Cat');
+    mongoose = require('mongoose');
 
-// Connect to MongoDB
+// Conect to DB
 mongoose.connect("mongodb://localhost/test");
-// require('./models/cat.js'),
+require('./models/cat.js');
+var Cat = mongoose.model('Cat');
 
+var seedCats = function() {
+  Cat.count({}, function (err, count) {
+    console.log("Count is " + count);
+    if (count > 0) {
+      console.log("DB is already seeded!");
+    } else {
+      // seed DB
+      console.log("DB needs to be seeded!");
+      Cat.create([
+        {name: "Rascal",
+         birthMonth: "February",
+         birthYear: "2012",
+         type: "tabby"},
+        {name: "GreyBear",
+         birthMonth: "August",
+         birthYear: "2014",
+         type: "siamese"},
+        {name: "Oliver",
+         birthMonth: "November",
+         birthYear: "2010",
+         type: "orange tabby"}
+      ], function (err, cats) {
+        if (err) {
+          console.log("Error seeding DB: " + err);
+        } else {
+          console.log("Meow!");
+        }
+      });
+    }
+  });
+};
+
+seedCats();
 
 // Instantiate express app
 var app = express();
@@ -33,7 +67,7 @@ app.use(express.static('public'));
   //     {name: "Oliver",
   //      birthMonth: "November",
   //      birthYear: "2010",
-  //      type: "orange tabby"},
+  //      type: "orange tabby"}
   //   ];
 
 
@@ -44,7 +78,7 @@ app.use(express.static('public'));
 
 app.get('/api', function (req, res) {
   // res.json(cats);
-  var cats = CatSchema.find().exec(function(err, cats) {
+  var cats = Cat.find().exec(function(err, cats) {
     console.log(cats)
   });
   console.log("Meow!");
