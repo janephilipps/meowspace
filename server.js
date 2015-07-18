@@ -54,34 +54,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Set up static assets
 app.use(express.static('public'));
 
-// TEST DATA
-  // var cats = [
-  //     {name: "Rascal",
-  //      birthMonth: "February",
-  //      birthYear: "2012",
-  //      type: "tabby"},
-  //     {name: "GreyBear",
-  //      birthMonth: "August",
-  //      birthYear: "2014",
-  //      type: "siamese"},
-  //     {name: "Oliver",
-  //      birthMonth: "November",
-  //      birthYear: "2010",
-  //      type: "orange tabby"}
-  //   ];
-
-
-
-
-
 // ROUTES
+
+// app.get('/', function (req, res) {
+//   Cat.find().exec(function (err, cats) {
+//     res.send(cats);
+//   })
+// });
 
 app.get('/api', function (req, res) {
   // res.json(cats);
-  var cats = Cat.find().exec(function(err, cats) {
-    console.log(cats)
+  Cat.find().exec(function (err, cats) {
+    res.json(cats);
   });
-  console.log("Meow!");
+  // console.log("Meow!");
 });
 
 // app.get('/cats', function (req, res) {
