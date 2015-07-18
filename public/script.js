@@ -4,10 +4,14 @@ $(function() {
 
   var $catsList = $('#cats-list');
 
-  _.each(cats, function (cat, index) {
-    var $cat = $(catsTemplate(cat));
-    $cat.attr('data-index', index);
-    $catsList.append($cat);
+  $.get("/api", function (data) {
+    var cats = data;
+
+    _.each(cats, function (cat, index) {
+      var $cat = $(catsTemplate(cat));
+      $cat.attr('data-index', index);
+      $catsList.append($cat);
+    });
   });
 
 });
