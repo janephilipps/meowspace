@@ -1,9 +1,13 @@
+
 var express = require('express'),
     bodyParser = require('body-parser'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    Cat = require('mongoose').model('Cat');
 
 // Connect to MongoDB
 mongoose.connect("mongodb://localhost/test");
+// require('./models/cat.js'),
+
 
 // Instantiate express app
 var app = express();
@@ -17,25 +21,32 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // TEST DATA
-  var cats = [
-      {name: "Rascal",
-       birthMonth: "February",
-       birthYear: "2012",
-       type: "tabby"},
-      {name: "GreyBear",
-       birthMonth: "August",
-       birthYear: "2014",
-       type: "siamese"},
-      {name: "Oliver",
-       birthMonth: "November",
-       birthYear: "2010",
-       type: "orange tabby"},
-    ];
+  // var cats = [
+  //     {name: "Rascal",
+  //      birthMonth: "February",
+  //      birthYear: "2012",
+  //      type: "tabby"},
+  //     {name: "GreyBear",
+  //      birthMonth: "August",
+  //      birthYear: "2014",
+  //      type: "siamese"},
+  //     {name: "Oliver",
+  //      birthMonth: "November",
+  //      birthYear: "2010",
+  //      type: "orange tabby"},
+  //   ];
+
+
+
+
 
 // ROUTES
 
 app.get('/api', function (req, res) {
-  res.json(cats);
+  // res.json(cats);
+  var cats = CatSchema.find().exec(function(err, cats) {
+    console.log(cats)
+  });
   console.log("Meow!");
 });
 
