@@ -2,6 +2,9 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
 
+// Connect to MongoDB
+mongoose.connect("mongodb://localhost/test");
+
 // Instantiate express app
 var app = express();
 
