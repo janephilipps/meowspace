@@ -70,6 +70,12 @@ app.get('/api', function (req, res) {
   // console.log("Meow!");
 });
 
+app.post('/', function (req, res) {
+  Cat.create({ name: req.body.name, birthMonth: req.body.birthMonth, birthYear: req.body.birthYear, type: req.body.type });
+  console.log("Cat successfully created!")
+  res.redirect('/');
+});
+
 // app.get('/cats', function (req, res) {
 //   res.send("Cats page!");
 // });
