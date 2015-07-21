@@ -14,27 +14,4 @@ $(function() {
     });
   });
 
-  var $createForm = $('#create-form');
-  var $home = $('#home');
-
-  $catsList.hide();
-  $createForm.hide();
-
-  $('#create').on('click', function (event) {
-    $home.hide();
-    $catsList.hide();
-    $createForm.show();
-  });
-
-  $('#cats').on('click', function (event) {
-    $home.hide();
-    $createForm.hide();
-    $catsList.show();
-  });
-
-  $('#home-nav').on('click', function (event) {
-    $catsList.hide();
-    $createForm.hide();
-    $home.show();
-  });
 });

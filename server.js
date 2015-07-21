@@ -56,18 +56,22 @@ app.use(express.static('public'));
 
 // ROUTES
 
-// app.get('/', function (req, res) {
-//   Cat.find().exec(function (err, cats) {
-//     res.send(cats);
-//   })
-// });
+app.get('/', function (req, res) {
+  res.sendfile('views/index.html');
+});
 
 app.get('/api', function (req, res) {
-  // res.json(cats);
   Cat.find().exec(function (err, cats) {
     res.json(cats);
   });
-  // console.log("Meow!");
+});
+
+app.get('/create', function (req, res) {
+  res.sendfile('views/create.html');
+});
+
+app.get('/cats', function (req, res) {
+  res.sendfile('views/cats.html');
 });
 
 app.post('/', function (req, res) {
@@ -75,22 +79,6 @@ app.post('/', function (req, res) {
   console.log("Cat successfully created!")
   res.redirect('/');
 });
-
-// app.get('/cats', function (req, res) {
-//   res.send("Cats page!");
-// });
-
-// app.get('/cats/:id', function (req, res) {
-//   res.send("Cat profile page!");
-// });
-
-// app.get('/cats/new', function (req, res) {
-//   res.send("Create a cat profile!");
-// });
-
-// app.post('/cats', function (req, res) {
-//   // post new cat data to MongoDB
-// });
 
 var server = app.listen(process.env.PORT || 3000, function () {
     var host = server.address().address;
