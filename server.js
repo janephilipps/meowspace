@@ -60,6 +60,11 @@ app.get('/', function (req, res) {
   res.sendfile('views/index.html');
 });
 
+// signup route with placeholder response
+app.get('/signup', function (req, res) {
+  res.send('coming soon');
+});
+
 app.get('/api', function (req, res) {
   Cat.find().exec(function (err, cats) {
     res.json(cats);
