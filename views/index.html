@@ -16,9 +16,21 @@
         <li id="create"><a href="/create">Create<span class="sr-only">(current)</span></a></li>
         <li id="cats"><a href="/cats">Cats</a></li>
       </ul>
-      <button type="button" class="btn btn-default navbar-btn navbar-right">Sign up</button>
+      <button type="button" class="btn btn-default btn btn-primary navbar-btn navbar-right" data-toggle="modal" data-target=".bs-example-modal-sm">Sign up</button>
     </div>
   </nav>
+
+  <!-- Small modal window -->
+  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <form action="/cats" method="POST">
+          <input type="text" name="email" placeholder="Email Address">
+          <input type="password" name="password" placeholder="Password">
+        </form>
+      </div>
+    </div>
+  </div>
 
     <div class="container" id="home">
       <div class="row">

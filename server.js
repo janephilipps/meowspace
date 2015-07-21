@@ -67,6 +67,18 @@ app.get('/signup', function (req, res) {
   res.send('coming soon');
 });
 
+// cat submits the signup form
+app.post('/cats', function (req, res) {
+
+  // grab cat data from params (req.body)
+  var newCat = req.body.cat;
+
+  // create new cat with secure password
+  Cat.createSecure(newCat.email, newCat.password, function (err, cat) {
+    res.send(cat);
+  });
+});
+
 app.get('/api', function (req, res) {
   Cat.find().exec(function (err, cats) {
     res.json(cats);
