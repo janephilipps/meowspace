@@ -71,7 +71,8 @@ app.get('/signup', function (req, res) {
 app.post('/cats', function (req, res) {
 
   // grab cat data from params (req.body)
-  var newCat = req.body.cat;
+  var newCat = req.body;
+  // console.log(req.body);
 
   // create new cat with secure password
   Cat.createSecure(newCat.email, newCat.password, function (err, cat) {

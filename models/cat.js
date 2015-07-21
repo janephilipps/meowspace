@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    bcrypt = require('bcrypt');
 
 var Schema = mongoose.Schema;
 var CatSchema = new Schema({

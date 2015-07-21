@@ -1,3 +1,9 @@
 body {
   padding-top: 70px;
 }
+
+
+.modal-sm input {
+  display: block;
+  margin-top: 5px;
+}
