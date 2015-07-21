@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 var CatSchema = new Schema({
+    emailAddress: String,
+    password: String,
     name: String,
     birthMonth: String,
     birthYear: String,

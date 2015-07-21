@@ -2,7 +2,9 @@
 
 var express = require('express'),
     bodyParser = require('body-parser'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    bcrypt = require('bcrypt'),
+    salt = bcrypt.genSaltSync(10);
 
 // Conect to DB
 mongoose.connect("mongodb://localhost/test");
