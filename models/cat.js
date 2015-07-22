@@ -12,7 +12,7 @@ var CatSchema = new Schema({
 });
 
 // create a new cat with secure (hashed) password
-CatSchema.statics.createSecure = function (email, password, callback) {
+CatSchema.statics.createSecure = function (email, password, name, birthMonth, birthYear, type, callback) {
   // `this` references our schema
   // store it in variable `that` because `this` changes context in nested callbacks
   var that = this;
@@ -25,7 +25,11 @@ CatSchema.statics.createSecure = function (email, password, callback) {
       // create the new cat (save to db) with hashed password
       that.create({
         email: email,
-        passwordDigest: hash
+        passwordDigest: hash,
+        name: name,
+        birthMonth: birthMonth,
+        birthYear: birthYear,
+        type: type
       }, callback);
     });
   });
