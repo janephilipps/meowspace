@@ -66,28 +66,28 @@ app.use(session({
 }));
 
 // middleware to manage sessions
-// app.use('/', function (req, res, next) {
-//   // saves catId in session for logged-in cat
-//   req.login = function (cat) {
-//     req.session.catId = cat.id;
-//   };
+app.use('/', function (req, res, next) {
+  // saves catId in session for logged-in cat
+  req.login = function (cat) {
+    req.session.catId = cat.id;
+  };
 
-//   // finds cat currently logged in based on `session.catId`
-//   req.currentCat = function (callback) {
-//     Cat.findOne({_id: req.session.catId}, function (err, cat) {
-//       req.cat = cat;
-//       callback(null, cat);
-//     });
-//   };
+  // finds cat currently logged in based on `session.catId`
+  req.currentCat = function (callback) {
+    Cat.findOne({_id: req.session.catId}, function (err, cat) {
+      req.cat = cat;
+      callback(null, cat);
+    });
+  };
 
-//   // destroy `session.catId` to log out user
-//   req.logout = function () {
-//     req.session.catId = null;
-//     req.cat = null;
-//   };
+  // destroy `session.catId` to log out user
+  req.logout = function () {
+    req.session.catId = null;
+    req.cat = null;
+  };
 
-//   next();
-// });
+  next();
+});
 
 // ROUTES
 
@@ -114,7 +114,7 @@ app.post('/cats', function (req, res) {
       console.log("Error is " + err);
     } else {
       console.log(cat);
-      res.redirect('/');
+      res.redirect('/?login=true');
     }
   });
 });
@@ -128,20 +128,20 @@ app.get('/logout', function (req, res) {
 });
 
 // cat submits the login form
-// app.post('/login', function (req, res) {
+app.post('/login', function (req, res) {
 
-//   // grab cat data from params (req.body)
-//   var catData = req.body;
+  // grab cat data from params (req.body)
+  var catData = req.body;
 
-//   // call authenticate function to check if password user entered is correct
-//   Cat.authenticate(catData.email, catData.password, function (err, cat) {
-//     // saves cat id to session
-//     req.login(cat);
+  // call authenticate function to check if password user entered is correct
+  Cat.authenticate(catData.email, catData.password, function (err, cat) {
+    // saves cat id to session
+    req.login(cat);
 
-//     // redirect to cat profile
-//     res.redirect('/profile');
-//   });
-// });
+    // redirect to cat profile
+    res.redirect('/profile');
+  });
+});
 
 // user profile page
 app.get('/profile', function (req, res) {

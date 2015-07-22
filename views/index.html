@@ -17,8 +17,8 @@
         <li id="cats"><a href="/cats">Cats</a></li>
       </ul>
       <button type="button" class="btn btn-default btn btn-primary navbar-btn navbar-right" data-toggle="modal" data-target=".signup">Sign up</button>
-      <!-- <button type="button" class="btn btn-default btn btn-primary navbar-btn navbar-right" data-toggle="modal" data-target=".login">Log in</button>
-      <button type="button" class="btn btn-default btn btn-primary navbar-btn navbar-right" action="/logout">Log out</button> -->
+      <button type="button" class="btn btn-default btn btn-primary navbar-btn navbar-right" data-toggle="modal" data-target=".login">Log in</button>
+      <!-- <button type="button" class="btn btn-default btn btn-primary navbar-btn navbar-right" action="/logout">Log out</button> -->
     </div>
   </nav>
 
@@ -28,7 +28,7 @@
       <div class="modal-content">
         <h3>Sign up</h3>
         <form id="cat" action="/cats" method="POST">
-          <input type="text" name="email" placeholder="Email Address">
+          <input type="text" name="email" placeholder="Email Address" autofocus>
           <input type="password" name="password" placeholder="Password">
           <input type="text" name="name" placeholder="Cat Name">
               <select id="birth-month" name="birthMonth">
@@ -83,18 +83,18 @@
   </div>
 
   <!-- LOGIN modal window -->
-  <!-- <div class="modal fade bs-example-modal-sm login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal fade bs-example-modal-sm login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <h3>Log in</h3>
         <form id="cat" action="/login" method="POST">
-          <input type="text" name="email" placeholder="Email Address">
+          <input type="text" name="email" placeholder="Email Address" autofocus>
           <input type="password" name="password" placeholder="Password">
           <input type="submit" value="Meow!">
         </form>
       </div>
     </div>
-  </div> -->
+  </div>
 
     <div class="container" id="home">
       <div class="row">
@@ -109,6 +109,9 @@
 
     <!-- BOOTSTRAP JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- CUSTOM SCRIPT -->
+    <script src="script.js"></script>
 
   </body>
 </html>
