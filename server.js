@@ -148,7 +148,7 @@ app.get('/profile', function (req, res) {
   // finds user currently logged in
   req.currentCat(function (err, cat) {
     console.log(session.catId);
-    res.send('Welcome ' + cat.name);
+    res.sendfile('views/profile.html');
   });
 });
 
