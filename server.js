@@ -70,12 +70,14 @@ app.use('/', function (req, res, next) {
   // saves catId in session for logged-in cat
   req.login = function (cat) {
     req.session.catId = cat.id;
+    console.log("req.session.catId = " + req.session.catId);
   };
 
   // finds cat currently logged in based on `session.catId`
   req.currentCat = function (callback) {
     Cat.findOne({_id: req.session.catId}, function (err, cat) {
       req.cat = cat;
+      console.log("req.cat = " + req.cat);
       callback(null, cat);
     });
   };
@@ -147,7 +149,7 @@ app.post('/login', function (req, res) {
 app.get('/profile', function (req, res) {
   // finds user currently logged in
   req.currentCat(function (err, cat) {
-    console.log(session.catId);
+    console.log("cat = " + cat);
     res.sendfile('views/profile.html');
   });
 });
@@ -155,6 +157,14 @@ app.get('/profile', function (req, res) {
 app.get('/api', function (req, res) {
   Cat.find().exec(function (err, cats) {
     res.json(cats);
+  });
+});
+
+app.get('/api/cat', function (req, res) {
+  // find cat where session id
+  req.currentCat(function (err, cat) {
+    console.log("cat for /api/cat is " + cat);
+    res.json(cat);
   });
 });
 

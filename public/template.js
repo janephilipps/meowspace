@@ -14,12 +14,4 @@ $(function() {
     });
   });
 
-  var profileTemplate = _.template($('#profile-template').html());
-
-  var $profile = $('#profile');
-
-  $.get("/", function (data) {
-    
-  });
-
 });
