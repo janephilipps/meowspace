@@ -1,14 +1,19 @@
+// Require mongoose and other modules
 var mongoose = require('mongoose'),
-    bcrypt = require('bcrypt');
+    Schema = mongoose.Schema,
+    bcrypt = require('bcrypt'),
+    salt = bcrypt.genSaltSync(10),
+    Meow = require('./meow');
 
-var Schema = mongoose.Schema;
+// Define cat schema
 var CatSchema = new Schema({
     email: String,
     passwordDigest: String,
     name: String,
     birthMonth: String,
     birthYear: String,
-    type: String
+    type: String,
+    meows: [Meow.schema]
 });
 
 // create a new cat with secure (hashed) password
@@ -58,4 +63,8 @@ CatSchema.methods.checkPassword = function (password) {
   return bcrypt.compareSync(password, this.passwordDigest);
 };
 
-mongoose.model('Cat', CatSchema);
+// Create and export Cat model
+var Cat = mongoose.model('Cat', CatSchema);
+module.exports = Cat;
+
+// mongoose.model('Cat', CatSchema);

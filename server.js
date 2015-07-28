@@ -3,14 +3,22 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
+    Meow = require('./models/meow'),
+    Cat = require('./models/cat'),
     bcrypt = require('bcrypt'),
     salt = bcrypt.genSaltSync(10),
     session = require('express-session');
 
 // Conect to DB
-mongoose.connect("mongodb://localhost/test");
-require('./models/cat.js');
-var Cat = mongoose.model('Cat');
+mongoose.connect(
+  process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/test'
+);
+
+// mongoose.connect("mongodb://localhost/test");
+// require('./models/cat.js');
+// var Cat = mongoose.model('Cat');
 
 var seedCats = function() {
   Cat.count({}, function (err, count) {
